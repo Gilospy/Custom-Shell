@@ -3,7 +3,7 @@
 #include "token.h"
 #include "command.h"
 
-#define MAX_LINE 1024
+#define MAX_LINE 1024 // maximum length of input line
 #define MAX_NUM_COMMANDS 100
 
 int main() {
@@ -11,7 +11,7 @@ int main() {
     char *tokens[MAX_NUM_TOKENS];
     Command commands[MAX_NUM_COMMANDS];
     int tokenCount, cmdCount;
-    char* prompt = "$ ";
+    char prompt[64] = "$ ";
 
     while (1) {
         printf("%s", prompt);

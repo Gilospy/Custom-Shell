@@ -1,16 +1,20 @@
-# Simple Makefile for lab07 - command separation
 
-lab07_ex3: main.o token.o command.o
-	gcc main.o token.o command.o -o lab07_ex3
+CC = gcc
+CFLAGS = -Wall -Iinclude     # -Iinclude tells gcc where to find .h files
+OBJ = main.o token.o command.o
+TARGET = lab07_ex3
 
-main.o: main.c token.h command.h
-	gcc -c main.c
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET)
 
-token.o: token.c token.h
-	gcc -c token.c
+main.o: main.c include/token.h include/command.h
+	$(CC) $(CFLAGS) -c main.c
 
-command.o: command.c command.h
-	gcc -c command.c
+token.o: token.c include/token.h
+	$(CC) $(CFLAGS) -c token.c
+
+command.o: command.c include/command.h
+	$(CC) $(CFLAGS) -c command.c
 
 clean:
-	rm *.o
+	rm -f $(OBJ) $(TARGET)
