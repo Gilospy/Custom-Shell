@@ -1,0 +1,84 @@
+ls -l -a
+ls -l "aa bb cc" 'cbd'
+./show "-1" aa\&bb c\\d
+ls -l -t a b c
+./show a bb ccc dddd 1 22 333 4444 555555
+./show a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 abc123xyz
+ls *.c
+ls /tmp/f?o
+./show first ; ./show second ; ./show third
+sleep 2 & sleep 3 & sleep 1 &
+./show hello world > out.txt
+cat out.txt
+cat < out.txt
+ls non_existent_file 2> err.txt
+cat err.txt
+sleep 5 ; echo hello
+ls -l | grep ".c"
+cat /tmp/foo | sort | sort -r | grep line
+cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat > junk
+cat | cat | cat | cat | cat | cat | cat
+cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | grep line
+ls *.c > c_files.txt ; cat c_files.txt | grep show > show_files.txt & echo "Done listing" >> c_files.txt ; ./show hello world 2> error.log | sort > sorted_output.txt &
+cat junk | grep hi
+cat junk | grep l
+history
+ls -l > junk ; cat < junk ; /bin/ls -lt /dev/tty* > junk2 & sleep 10 ; cat <junk2
+ls -lt | cat > junk ; ps | sort & echo ps-output ; sleep 10 & echo wait-for-10seconds ; cat junk | cat | grep a | sort -r
+ls -l > junk ; cat < junk ; /bin/ls -lt /dev/tty* > junk2 & sleep 10 ; cat < junk2
+ls -lt | cat > junk ; ps & echo ps-output ; sleep 10 & echo wait-for-10seconds ; cat junk
+history
+ls -l -a
+ls -l "aa bb cc" 'cbd'
+./show "-1" aa\&bb c\\d
+history
+ls -l -a
+ls -l "aa bb cc" 'cbd'
+./show "-1" aa\&bb c\\d
+ls -l -t a b c
+./show a bb ccc dddd 1 22 333 4444 555555
+./show a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 abc123xyz
+ls *.c
+ls /tmp/f?o
+ls -l /tmp/abc?
+ls -l abc*.?
+ps -elfH | grep biya4
+sleep 10 ; echo hello l ; sleep 10 ; echo hello2
+echo ps-command & ps & echo ls-command & ls -l
+ps & ls
+cat < /tmp/foo
+grep line < /tmp/foo
+ls -l > /tmp/junk
+cat /tmp/foo > /tmp/junk2
+ls -l " aa bb ccc" 2>error
+ls -l " aa bb ccc" 2> error
+cat error
+cat /tmp/foo | grep line
+cat /tmp/foo | sort
+cat /tmp/foo
+cat foo
+cat foo | sort
+cat foo | sort -r
+history
+cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+cat foo | sort | sort -r | grep line
+cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat > junk
+cat junk
+ps & ls
+ls -l > junk ; cat < junk ; /bin/ls -lt /dev/tty* > junk2 & sleep 10 ; cat < junk2
+ls -lt | cat > junk ; ps & echo ps-output ; sleep 10 & echo wait-for-10seconds ; cat junk
+ls -l " aa bb ccc" 2>
+ls -l > junk ; cat < junk ; /bin/ls -lt /dev/tty* > junk2 & sleep 10 ; cat <junk2
+ls -lt | cat > junk ; ps | sort & echo ps-output ; sleep 10 & echo wait-for-10seconds ; cat junk | cat | grep a | sort -r
+ls
+ps
+./show a b c
+prompt myshell
+cd /tmp
+pwd
+cd
+pwd
+cd ..
+pwd
+history

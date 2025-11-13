@@ -7,6 +7,14 @@ TARGET = lab07_ex3
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)
 
+# test
+
+test: test.o token.o command.o
+	$(CC) test.o token.o command.o -o test
+
+test.o : tests/test.c include/token.h include/command.h
+	$(CC) $(CFLAGS) -c tests/test.c -o test.o
+
 main.o: main.c include/token.h include/command.h
 	$(CC) $(CFLAGS) -c main.c
 

@@ -9,14 +9,21 @@
 // date:		18/10/2025
 
 
+
+#include <string.h> 
+#include <stdlib.h>
+#include <glob.h>
 #include "command.h"
-#include <string.h>
 
 
 int isSeparator(const char *token) {
     return token && (strcmp(token, pipeSep) == 0 ||
                      strcmp(token, conSep)  == 0 ||
                      strcmp(token, seqSep)  == 0);
+}
+// Utility: check if a string contains a wildcard
+int has_wildcard(const char *s) {
+    return (strchr(s, '*') != NULL || strchr(s, '?') != NULL);    
 }
 
 int separateCommands(char *tokens[], Command command[]) {
@@ -32,6 +39,8 @@ int separateCommands(char *tokens[], Command command[]) {
         // Initialize the command structure
         command[cmdCount].argc = 0;
         command[cmdCount].separator = NULL;
+        command[cmdCount].redirectTo = NULL;
+        command[cmdCount].redirectType = 0;
         
         // First token of the command is the command name
         command[cmdCount].command = tokens[i];
@@ -40,10 +49,68 @@ int separateCommands(char *tokens[], Command command[]) {
         i++;
 
         // Collect arguments until we hit a separator or end
+        // Handle redirection tokens here 
         while (tokens[i] && !isSeparator(tokens[i])) {
             if (command[cmdCount].argc >= MAX_NUM_TOKENS) {
                 return -4; // Too many arguments
             }
+            // Handle input redirection
+            if (strcmp(tokens[i], inputSep) == 0) {
+                i++;
+                if (tokens[i]) {
+                    command[cmdCount].redirectTo = tokens[i];
+                    command[cmdCount].redirectType = 1; // output redirection
+                    i++;
+                    continue;
+                }
+            }
+            // Handle output redirection
+            if (strcmp(tokens[i], outputSep) == 0) {
+                i++;
+                if (tokens[i]) {
+                    command[cmdCount].redirectTo = tokens[i];
+                    command[cmdCount].redirectType = 2; // output redirection
+                    i++;
+                    continue;
+                }
+            }
+            // Handle error redirection
+            if (strcmp(tokens[i], errorSep) == 0) {
+                i++;
+                if (tokens[i]) {
+                    command[cmdCount].redirectTo = tokens[i];
+                    command[cmdCount].redirectType = 3; // error redirection
+                    i++;
+                    continue;
+                }
+            }
+            if (has_wildcard(tokens[i])) {
+                glob_t results;
+                memset(&results, 0, sizeof(results));
+
+                int ret = glob(tokens[i], 0, NULL, &results);
+                if (ret == 0) {
+                    // Add all matches
+                    for (size_t i = 0; i < results.gl_pathc; i++) {
+                        command[cmdCount].argv[command[cmdCount].argc++] = strdup(results.gl_pathv[i]);
+                    }
+                } else {
+                    // If no matches, treat as literal
+                    command[cmdCount].argv[command[cmdCount].argc++] = strdup(tokens[i]);
+                }
+
+                globfree(&results);
+            }
+
+            // Handle redirects sep  such as <junk , >file etc
+            
+
+            // Check if outputSep is part of the token
+          
+
+
+
+            
             command[cmdCount].argv[command[cmdCount].argc] = tokens[i];
             command[cmdCount].argc++;
             i++;

@@ -10,14 +10,20 @@
 #define pipeSep  "|"  // pipe separator "|"
 #define conSep   "&"  // concurrent execution separator "&"
 #define seqSep   ";"  // sequential execution separator ";"
+#define inputSep "<"  // input redirection "<"
+#define outputSep ">" // output redirection ">"
+#define errorSep "2>" // error redirection "2>"
+#define wildcard  "*"  // wildcard "*"
+#define wildcardSingle "?" // single-character wildcard "?"
 
 struct CommandStruct {
    char* command; // The command name (first token of the command)
    char *separator;	   // the command separator that follows the command,  must be one of "|", "&", and ";"
    int argc;       // number of arguments (tokens) in the command 
    char *argv[MAX_NUM_TOKENS];     // array of pointers to the command's argument tokens
-
-};
+   char* redirectTo;   // Redirect output or error to this file
+   int redirectType;  // 0: none, 1: input, 2: output, 3: error
+ };
 
 typedef struct CommandStruct Command;
 
