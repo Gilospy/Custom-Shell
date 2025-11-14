@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
-TARGET = myshell
+TARGET = myshell 
 OBJS = main.o parser.o execute.o builtins.o history.o signals.o
 
 all: $(TARGET)
@@ -28,5 +28,5 @@ signals.o: signals.c shell.h
 
 clean:
 	rm -f $(OBJS) $(TARGET)
+	rm -f *.o
 
-.PHONY: all clean

@@ -209,7 +209,7 @@ void executePipeline(struct Command_struct commands[], int start, int count) {
 
 /* Expand wildcards in command arguments */
 int expandWildcards(struct Command_struct *cmd) {
-    glob_t globbuf;
+   
     int i, j;
     int new_argc = 0;
     char *new_argv[MAX_ARGS];
@@ -225,6 +225,8 @@ int expandWildcards(struct Command_struct *cmd) {
                 break;
             }
         }
+        glob_t globbuf;
+        memset(&globbuf, 0, sizeof(globbuf));
         
         if (has_wildcards) {
             /* Perform glob expansion */
@@ -236,7 +238,7 @@ int expandWildcards(struct Command_struct *cmd) {
                         new_argv[new_argc++] = strdup(globbuf.gl_pathv[j]);
                     }
                 }
-                globfree(&globbuf);
+                
             } else {
                 /* Expansion failed, keep original */
                 if (new_argc < MAX_ARGS - 1) {
@@ -249,6 +251,7 @@ int expandWildcards(struct Command_struct *cmd) {
                 new_argv[new_argc++] = strdup(cmd->argv[i]);
             }
         }
+        globfree(&globbuf);
     }
     
     /* Replace old argv with expanded argv */
