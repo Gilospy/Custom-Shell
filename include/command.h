@@ -16,6 +16,12 @@
 #define wildcard  "*"  // wildcard "*"
 #define wildcardSingle "?" // single-character wildcard "?"
 
+#define CD_CMD "cd" // change directory command
+#define EXIT_CMD "exit"    // exit command
+#define PROMPT_CMD "prompt" // change prompt command
+#define PWD_CMD "pwd" // print working directory command
+#define HISTORY_CMD "history" // history command
+
 struct CommandStruct {
    char* command; // The command name (first token of the command)
    char *separator;	   // the command separator that follows the command,  must be one of "|", "&", and ";"

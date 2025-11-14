@@ -1,16 +1,17 @@
 
 CC = gcc
-CFLAGS = -Wall -Iinclude     # -Iinclude tells gcc where to find .h files
+CFLAGS = -Wall -Iinclude      # -Iinclude tells gcc where to find .h files
+LDFLAGS = -lncurses           # Link ncurses library
 OBJ = main.o token.o command.o
-TARGET = lab07_ex3
+TARGET = ./bin/shell
 
 $(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
-
+	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
+ 
 # test
 
 test: test.o token.o command.o
-	$(CC) test.o token.o command.o -o test
+	$(CC) test.o token.o command.o -o test $(LDFLAGS)
 
 test.o : tests/test.c include/token.h include/command.h
 	$(CC) $(CFLAGS) -c tests/test.c -o test.o

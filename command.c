@@ -84,33 +84,8 @@ int separateCommands(char *tokens[], Command command[]) {
                     continue;
                 }
             }
-            if (has_wildcard(tokens[i])) {
-                glob_t results;
-                memset(&results, 0, sizeof(results));
-
-                int ret = glob(tokens[i], 0, NULL, &results);
-                if (ret == 0) {
-                    // Add all matches
-                    for (size_t i = 0; i < results.gl_pathc; i++) {
-                        command[cmdCount].argv[command[cmdCount].argc++] = strdup(results.gl_pathv[i]);
-                    }
-                } else {
-                    // If no matches, treat as literal
-                    command[cmdCount].argv[command[cmdCount].argc++] = strdup(tokens[i]);
-                }
-
-                globfree(&results);
-            }
-
-            // Handle redirects sep  such as <junk , >file etc
             
-
-            // Check if outputSep is part of the token
           
-
-
-
-            
             command[cmdCount].argv[command[cmdCount].argc] = tokens[i];
             command[cmdCount].argc++;
             i++;
