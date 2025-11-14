@@ -1,0 +1,24 @@
+total 17844
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 a
+-rwxrwxrwx 1 gilo gilo        0 Nov 14 12:53 aa bb cc
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 ab
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abc
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcx
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxy
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.a
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.aa
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.b
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.bb
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.c
+-rwxrwxrwx 1 gilo gilo        0 May 19  2008 abcxyz.ccc
+-rwxrwxrwx 1 gilo gilo 13534035 Nov  7  2008 bigbig.txt
+-rwxrwxrwx 1 gilo gilo  4511345 Nov  7  2008 big.txt
+-rwxrwxrwx 1 gilo gilo       65 Nov 14 12:56 err.txt
+-rwxrwxrwx 1 gilo gilo       63 May 19  2008 foo
+-rwxrwxrwx 1 gilo gilo        0 Nov 14 13:10 junk
+-rwxrwxrwx 1 gilo gilo   148992 Nov  7  2008 m
+-rwxrwxrwx 1 gilo gilo    48216 Nov 14 12:51 myshell
+-rwxrwxrwx 1 gilo gilo      127 Nov 14 12:56 out.txt
+-rwxrwxrwx 1 gilo gilo    16000 Oct 27  2024 show
+-rwxrwxrwx 1 gilo gilo      252 May 19  2008 show.c

@@ -1,0 +1,4 @@
+Command line arguments:  3
+Command line argument 0:   ./show
+Command line argument 1:   hello
+Command line argument 2:   world
