@@ -11,7 +11,7 @@ $(TARGET): $(OBJ)
 # test
 
 test: test.o token.o command.o
-	$(CC) test.o token.o command.o -o test $(LDFLAGS)
+	$(CC) test.o token.o command.o -o ./bin/test $(LDFLAGS)
 
 test.o : tests/test.c include/token.h include/command.h
 	$(CC) $(CFLAGS) -c tests/test.c -o test.o
@@ -27,3 +27,4 @@ command.o: command.c include/command.h
 
 clean:
 	rm -f $(OBJ) $(TARGET)
+	rm *.o

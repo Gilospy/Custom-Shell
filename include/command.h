@@ -22,6 +22,9 @@
 #define PWD_CMD "pwd" // print working directory command
 #define HISTORY_CMD "history" // history command
 
+#define MAX_NUM_COMMANDS 100
+#define PATH_LENGTH 1024
+
 struct CommandStruct {
    char* command; // The command name (first token of the command)
    char *separator;	   // the command separator that follows the command,  must be one of "|", "&", and ";"
@@ -47,5 +50,16 @@ typedef struct CommandStruct Command;
  *
  */
 int separateCommands(char *tokens[], Command command[]);
+
+
+void expandString(const char* input, char* output, size_t outSize);
+
+int has_wildcard(const char *s);
+
+int handleBuiltIn(Command* cmd , char* prompt , char *history[] , int historyCount);
+void executeCommand(Command cmd);
+void executePipeCommands(Command* cmds, int cmdCount);
+void executeCommands(Command* cmds, int cmdCount , char* prompt , char *history[] , int historyCount);
+int setIO(Command cmd);
 
 #endif // COMMAND_H
