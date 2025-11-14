@@ -1,8 +1,0 @@
-ls > junk
-ls >junk
-cat|test
-ls $HOME
-ls ~
-ls $HOME
-ls $PATH
-touch "aa bb cc"

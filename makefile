@@ -1,30 +1,32 @@
-
 CC = gcc
-CFLAGS = -Wall -Iinclude      # -Iinclude tells gcc where to find .h files
-LDFLAGS = -lncurses           # Link ncurses library
-OBJ = main.o token.o command.o
-TARGET = ./bin/shell
+CFLAGS = -Wall -Wextra -g
+TARGET = myshell
+OBJS = main.o parser.o execute.o builtins.o history.o signals.o
 
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
- 
-# test
+all: $(TARGET)
 
-test: test.o token.o command.o
-	$(CC) test.o token.o command.o -o ./bin/test $(LDFLAGS)
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-test.o : tests/test.c include/token.h include/command.h
-	$(CC) $(CFLAGS) -c tests/test.c -o test.o
-
-main.o: main.c include/token.h include/command.h
+main.o: main.c shell.h
 	$(CC) $(CFLAGS) -c main.c
 
-token.o: token.c include/token.h
-	$(CC) $(CFLAGS) -c token.c
+parser.o: parser.c shell.h
+	$(CC) $(CFLAGS) -c parser.c
 
-command.o: command.c include/command.h
-	$(CC) $(CFLAGS) -c command.c
+execute.o: execute.c shell.h
+	$(CC) $(CFLAGS) -c execute.c
+
+builtins.o: builtins.c shell.h
+	$(CC) $(CFLAGS) -c builtins.c
+
+history.o: history.c shell.h
+	$(CC) $(CFLAGS) -c history.c
+
+signals.o: signals.c shell.h
+	$(CC) $(CFLAGS) -c signals.c
 
 clean:
-	rm -f $(OBJ) $(TARGET)
-	rm *.o
+	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all clean
